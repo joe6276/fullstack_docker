@@ -13,7 +13,7 @@ export default function Movies(){
         <>
              <div id="app">
                 {data && data.map((movie:any)=>(
-                       <article id="item">
+                       <article id="item" key={movie.key}>
                        <img src={movie.image} alt={movie.title} />
                        <div>
                          <div>
