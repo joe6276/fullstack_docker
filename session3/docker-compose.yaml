@@ -1,0 +1,59 @@
+services:
+  database:
+    image: postgres
+    container_name: postgres
+    ports:
+      - '5432:5432'
+
+    environment:
+      POSTGRES_PASSWORD: postgres1
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - '4000:4000'
+    environment:
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres1
+      DATABASE_NAME: moviesdb
+
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - database
+    
+
+  frontend:
+    build: ./frontend
+    ports:
+      - '80:80'
+    stdin_open:
+      true
+    tty:
+      true
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+
+
+# All named Volumes must be listed 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

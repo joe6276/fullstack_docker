@@ -26,3 +26,6 @@ CMD [ "nginx", "-g" , "daemon off;" ]
 
    # 1st Create the files to be rendered by the server
    # 2nd Render them using a server 
+
+
+   # docker run -p 80:80 --it  frontend
